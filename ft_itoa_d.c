@@ -39,7 +39,7 @@ char		*all_len(int *len, t_arg *head, int power_s)
 {
 	len[3] = 0;
 	len[2] = (head->type == 17 || head->type == 18) ? 2 : 0;
-	len[6] = head->precision;
+	len[6] = head->precision == -1 ? 0 : head->precision;
 	len[5] = (len[6] > 0 || head->flag.hesh == 1) ? 1 : 0;
 	len[7] = (len[2] == 2 || head->type == 13 || head->type == 14) ? 2 : 0;
 	len[8] = power_s;
