@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 16:04:21 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/10 19:27:16 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/10 19:54:17 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	mod_char(t_arg *head, va_list ptr, char c)
 	head->precision = -1;
 	if (c != 0)
 		str = ft_strdup("%");
-	else if (head->size == 3 || head->type == 20)
+	else if (head->size == 3)
 	{
 		str = check_char(ptr);
 		head->len = head->len < ft_strlen(str) ? ft_strlen(str) : head->len;
