@@ -70,7 +70,10 @@ char	*mod_g(long double nbr, t_arg *head)
 	char				*m_d;
 	char				*m_e;
 
-	head->precision = head->precision > 1 ? head->precision : 0;
+	if (head->precision == -1 && (nbr - (long long)nbr == 0))
+		head->precision = 0;
+	else if (head->precision == -1)
+		head->precision = 1;
 	m_d = ft_itoa_d(nbr, head, -1);
 	m_e = mod_e(nbr, head);
 	if (ft_strlen(m_d) < ft_strlen(m_e))
