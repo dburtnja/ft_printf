@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mod_a.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/10 19:29:06 by dburtnja          #+#    #+#             */
+/*   Updated: 2017/02/10 19:30:16 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
@@ -9,13 +20,13 @@ void	add_p_nbr(long double nbr, int p, char **str, t_arg *head)
 	c = head->type == 17 ? 'a' : 'A';
 	buf = (int)nbr;
 	nbr = nbr - (long double)buf;
-	while (p > 0) 
+	while (p > 0)
 	{
 		nbr *= 16;
 		buf = (int)nbr;
 		nbr = nbr - (long double)buf;
 		**str = buf >= 10 ? buf - 10 + c : buf + '0';
-		(*str)++;	
+		(*str)++;
 		p--;
 	}
 }
@@ -43,7 +54,7 @@ int		ft_nbr_16_len(long double nbr)
 	i = 0;
 	buf = (int)nbr;
 	nbr = nbr - (long double)buf;
-	while (nbr != 0) 
+	while (nbr != 0)
 	{
 		nbr *= 16;
 		buf = (int)nbr;
