@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 14:02:03 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/10 18:36:09 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/10 21:40:53 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef	struct		s_arg
 	size_t			len;
 }					t_arg;
 
+int					ft_nbr_last_len(long double nbr, int base);
+char				*check_char(int c);
 int					ft_printf(char *str, ...);
 long double			ft_ceil(long double nbr);
 long double			ft_floor(long double nbr);

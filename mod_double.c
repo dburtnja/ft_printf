@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 15:50:26 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/10 19:39:03 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/11 14:52:55 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,26 +68,22 @@ char	*mod_g(long double nbr, t_arg *head)
 {
 	char		*m_d;
 	char		*m_e;
-	int			buf;
-	long double	b_nbr;
+	int			i;
 
-	b_nbr = nbr;
-	if (head->precision == -1 && nbr == 0)
+	if (head->precision == -1 && nbr - (long long)nbr == 0)
 		head->precision = 0;
-	else if (head->precision == -1)
+	else
+		head->precision = 4;
+	m_d = ft_itoa_d(nbr, head, -1);
+	i = ft_strlen(m_d);
+	while (i > 0 && m_d[i - 1] == '0' && head->precision != 0)
 	{
-		buf = 1;
-		while (buf != 0 && head->precision < 5)
-		{
-			nbr *= 10;
-			head->precision += 1;
-			buf = (int)nbr;
-			nbr = nbr - (long double)buf;
-		}
+		m_d[i - 1] = 0;
+		i--;
 	}
-	m_d = ft_itoa_d(b_nbr, head, -1);
-	m_e = mod_e(b_nbr, head);
-	if (ft_strlen(m_d) < ft_strlen(m_e))
+	head->precision = 5;
+	m_e = mod_e(nbr, head);
+	if ((i = ft_strlen(m_d)) < 6 || (size_t)i < ft_strlen(m_e))
 		return (m_d);
 	else
 		return (m_e);
