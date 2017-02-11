@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 15:50:26 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/11 17:18:46 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/11 18:39:12 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ char	*write_e(long double nbr, t_arg *head, int c)
 	char	*ret;
 	char	upper;
 
-	upper = 'E';
-	if (head->type == 13 || head->type == 15)
-		upper = 'e';
+	upper = head->type == 13 || head->type == 15 ? 'e' : 'E';
 	str2 = ft_strnew(10);
 	str2[0] = upper;
 	str2[1] = c < 0 ? '-' : '+';
@@ -33,6 +31,8 @@ char	*write_e(long double nbr, t_arg *head, int c)
 		buf++;
 	}
 	nbr_to_str(c > 0 ? c : c * -1, 10, &buf, 0);
+	head->width = head->width > (int)ft_strlen(str2) ? head->width -
+		(int)ft_strlen(str2) : head->width;
 	str1 = ft_itoa_d(nbr, head, c < 0 ? -c : c);
 	ret = ft_strjoin(str1, str2);
 	ft_strdel(&str1);
