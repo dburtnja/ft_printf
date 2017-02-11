@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 15:50:26 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/11 20:31:11 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/11 20:38:48 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,10 @@ char	*mod_g(long double nbr, t_arg *head)
 	char		*m_e;
 	int			i;
 	int			len;
+	int			nbr_n;
 
-	len = ft_nbrlen((long long)nbr, 10);
+	nbr_n = nbr < 0 ? -nbr : nbr;
+	len = ft_nbrlen((long long)nbr_n, 10);
 	if (head->precision == -1 && nbr - (long long)nbr == 0 && len > 6)
 		head->precision = 6;
 	else if (head->precision == -1 && nbr - (long long)nbr == 0)
@@ -90,7 +92,7 @@ char	*mod_g(long double nbr, t_arg *head)
 	i = head->precision;
 	head->precision = head->precision < 0 ? head->precision + len - 1 : 5;
 	m_e = mod_e(nbr, head);
-	if (((len = ft_strlen(m_d)) < 6 || (size_t)len < ft_strlen(m_e)) && i >= 0 && ft_nbrlen((long long)nbr, 10) < 6)
+	if (((len = ft_strlen(m_d)) < 6 || (size_t)len < ft_strlen(m_e)) && i >= 0 && ft_nbrlen((long long)nbr_n, 10) < 6)
 		return (m_d);
 	else
 		return (m_e);
