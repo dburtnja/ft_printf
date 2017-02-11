@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 15:50:26 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/11 18:39:12 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/11 20:21:57 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ char	*mod_g(long double nbr, t_arg *head)
 	int			len;
 
 	len = ft_nbrlen((long long)nbr, 10);
-	if (head->precision == -1 && nbr - (long long)nbr == 0)
+	if (head->precision == -1 && nbr - (long long)nbr == 0 && len > 6)
+		head->precision = 6;
+	else if (head->precision == -1 && nbr - (long long)nbr == 0)
 		head->precision = 0;
 	else if (head->precision == -1)
 		head->precision = 4;
@@ -88,7 +90,7 @@ char	*mod_g(long double nbr, t_arg *head)
 	i = head->precision;
 	head->precision = head->precision < 0 ? head->precision + len - 1 : 5;
 	m_e = mod_e(nbr, head);
-	if (((len = ft_strlen(m_d)) < 6 || (size_t)len < ft_strlen(m_e)) && i >= 0)
+	if (((len = ft_strlen(m_d)) < 6 || (size_t)len < ft_strlen(m_e)) && i >= 0 && head->precision == 6)
 		return (m_d);
 	else
 		return (m_e);
