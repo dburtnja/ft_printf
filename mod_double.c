@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 15:50:26 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/11 14:52:55 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/11 15:17:41 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	*mod_g(long double nbr, t_arg *head)
 
 	if (head->precision == -1 && nbr - (long long)nbr == 0)
 		head->precision = 0;
-	else
+	else if (head->precision == -1)
 		head->precision = 4;
 	m_d = ft_itoa_d(nbr, head, -1);
 	i = ft_strlen(m_d);
