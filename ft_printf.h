@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 14:02:03 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/08 14:26:41 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/12 21:36:17 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@ typedef	struct		s_arg
 	size_t			len;
 }					t_arg;
 
+void				scan_width(char *str, int *i, va_list arg, t_arg *head);
+void				scan_precision(char *str, int *i, va_list arg, int *nbr);
+char				*find_size(int *len, t_arg *head,int val);
+char				*mod_e(long double nbr, t_arg *head);
+char				*mod_g(long double nbr, t_arg *head);
+int					find_precision(long double nbr, t_arg *head, int nbr_len);
+int					ft_nbr_last_len(long double nbr, int base);
+char				*check_char(int c);
 int					ft_printf(char *str, ...);
 long double			ft_ceil(long double nbr);
 long double			ft_floor(long double nbr);
@@ -55,7 +63,6 @@ void				check_flags(char *str, int *i, t_flag *flag);
 int					check_precision(char *str, int *i);
 int					check_size(char *str, int *i);
 int					find_type(char *str, int *type, int *i);
-void				check_nbr(char *str, int *i, va_list arg, int *nbr);
 int					read_arg(t_arg *head, va_list ptr);
 void				mod_str(t_arg *head, va_list ptr);
 char				*cpy_and_put_char(char *str, t_arg *head);
@@ -84,7 +91,8 @@ void				mod_r(t_arg *head, va_list arg);
 char				*mod_a(long double nbr, t_arg *head);
 void				ft_round_d(long double nbr, t_arg *head, char *str);
 int					h_check_flags(char check, char c, int *flag);
-char				*proc_wint_t(int c);
+char				*proc_wint8(int c);
+char				*proc_wint16(int c);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 int					ft_lentoc(char *buf, char c);
 size_t				ft_putstr(char const *s);

@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 16:54:14 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/08 16:11:20 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/12 23:20:10 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,43 +87,71 @@ char	*ft_itoa_p(long long value, t_arg *head)
 		nbr_to_str(value, 10, &str, 0);
 	return (s);
 }
-
-char	*find_size(t_arg *head, int nbrl, int *len, int val)
+/*
+char	*find_size(t_arg *head, int *nbrl, int *len, int val)
 {
 	if (head->precision == 0 && val && head->type > 5 && head->type < 10)
 		return (ft_strnew(*len = 0));
-	else if (head->precision > nbrl)
-		return (ft_strnew(*len = head->precision));
-	else if (head->precision == -1 && head->width > nbrl && head->flag.nul == 1)
+	else if (head->precision > nbrl[1])
+		return (ft_strnew(*len = head->precision + nbrl[0]));
+	else if (head->precision == -1 && head->width > nbrl[0] + nbrl[1]
+&& head->flag.nul == 1)
 		return (ft_strnew(*len = head->width));
-	else if (head->precision <= nbrl && head->flag.hesh == 1 && head->type == 4)
-		return (ft_strnew(*len = nbrl + 1));
+	else if (head->precision <= nbrl[1] && head->flag.hesh == 1 &&
+head->type == 4)
+		return (ft_strnew(*len = nbrl[0] + nbrl[1] + 1));
 	else
-		return (ft_strnew(*len = nbrl));
+		return (ft_strnew(*len = nbrl[0] + nbrl[1]));
+}
+*/
+char	*find_size(int *len, t_arg *head, int val)
+{
+	int		f;
+
+	f = head->flag.nul == 1 && head->flag.min == 0 && head->precision < 0;
+	len[1] = 0;
+	if ((head->flag.hesh == 1 && val != 0) || head->type == 23)
+	{
+		if (len[4] == 8 && head->precision <= len[3])
+			len[1] = 1;
+		else if (len[4] == 16)
+			len[1] = 2;
+	}
+	len[0] = len[1] + len[3];
+	if (head->precision > len[3])
+	{
+		len[2] = head->precision - len[3];
+		len[0] = len[1] + len[2] + len[3];
+	}
+	else if (f && head->width > len[0])
+	{
+		len[2] = head->width - len[0];
+		len[0] = head->width;
+	}
+	return (ft_strnew(len[0]));
 }
 
 char	*ft_itoa_u(unsigned long long value, unsigned long long b,
 t_arg *head, int up)
 {
-	int		len;
-	int		nbrl;
+	int		len[5];
 	char	*s;
 	char	*str;
 
-	nbrl = ft_nbrlen(value, b);
-	if (head->flag.hesh == 1 && !(value == 0 && b != 8))
-	{
-		if (b == 8)
-			nbrl++;
-		else if (b == 16)
-			nbrl += 2;
-	}
-	if ((str = find_size(head, nbrl, &len, value == 0)) == NULL)
+	len[2] = 0;
+	len[3] = ft_nbrlen(value, b);
+	len[4] = b;
+	if ((str = find_size(&len[0], head, value)) == NULL)
 		exit(1);
 	s = str;
-	if (head->flag.hesh == 1 && !(value == 0 && b != 8))
+	if (len[1] > 0)
 		str = add_hesh(str, b, up);
-	str = add_nul(str, 0, len - nbrl, 0);
+	str = add_nul(str, 0, len[2], 0);
+	if (b == 8 && value == 0 && head->precision == 0 && head->flag.hesh == 1)
+	{
+		*str = '0';
+		str++;
+	}
 	if (value == 0 && head->precision == 0)
 		*str = '\0';
 	else

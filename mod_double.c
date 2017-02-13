@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 15:50:26 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/08 16:18:58 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/11 22:22:27 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ char	*write_e(long double nbr, t_arg *head, int c)
 	char	*ret;
 	char	upper;
 
-	upper = 'E';
-	if (head->type == 13 || head->type == 15)
-		upper = 'e';
+	upper = head->type == 13 || head->type == 15 ? 'e' : 'E';
 	str2 = ft_strnew(10);
 	str2[0] = upper;
 	str2[1] = c < 0 ? '-' : '+';
@@ -63,25 +61,6 @@ char	*mod_e(long double nbr, t_arg *head)
 	r_nbr = head->precision == 0 ? ft_r_nbr(nbr) : nbr;
 	return (write_e(nbr, head, count));
 }
-
-
-char	*mod_g(long double nbr, t_arg *head)
-{
-	char				*m_d;
-	char				*m_e;
-
-	if (head->precision == -1 && (nbr - (long long)nbr == 0))
-		head->precision = 0;
-	else if (head->precision == -1)
-		head->precision = 1;
-	m_d = ft_itoa_d(nbr, head, -1);
-	m_e = mod_e(nbr, head);
-	if (ft_strlen(m_d) < ft_strlen(m_e))
-		return (m_d);
-	else
-		return (m_e);
-}
-
 
 char	*type_d(t_arg *head, long double nbr)
 {
