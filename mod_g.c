@@ -20,6 +20,8 @@ int		find_precision(long double nbr, t_arg *head, int nbr_len)
 		head->precision = 0;
 	else if (head->precision == -1)
 		head->precision = 4;
+	else if (head->precision == 0 && (long long)nbr == 0)
+		head->precision = 1;
 	else
 		head->precision = head->precision - nbr_len;
 	return (1);
@@ -61,6 +63,16 @@ char	*try_mod_e(long double nbr, t_arg *head, int nbr_len)
 	return (mod_e(nbr, head));
 }
 
+int		only_nbr_len(char *str)
+{
+	int		i;
+
+	i = 0;
+	while ((str[i] != 0 && str[i] >= '0' && str[i] <= '9') || str[i] == '-')
+		i++;
+	return (i);
+}
+
 char	*mod_g(long double nbr, t_arg *head)
 {
 	char	*str_e;
@@ -80,8 +92,8 @@ char	*mod_g(long double nbr, t_arg *head)
 	ft_putchar('\n');
 	ft_putstr(str_e);
 	ft_putchar('\n');
-*/	len_e = ft_strlen(str_e);
-	len_d = ft_strlen(str_d);
+*/	len_e = only_nbr_len(str_e);
+	len_d = only_nbr_len(str_d);
 	if (len_d <= len_e)
 		return (str_d);
 	else
