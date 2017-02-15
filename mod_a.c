@@ -83,7 +83,7 @@ char	*write_a(long double nbr, t_arg *head, int c)
 	nbr_to_str((long long)nbr, 10, &str, 0);
 	if (len[5] == 1)
 	{
-		*str = ',';
+		*str = '.';
 		str++;
 	}
 	add_p_nbr(nbr, len[6], &str, head);
