@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 21:28:34 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/15 21:28:38 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/15 21:58:45 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	rem_nul(char *str)
 
 	i = only_nbr_len(str);
 	p = str + i - 1;
-	while (*p == '0' && p != str)
+	while ((*p == '0' || *p == '.') && p != str)
 		p--;
 	ft_memmove((void*)p + 1, (void*)str + i, (ft_strlen(str) - i) + 1);
 }
@@ -90,6 +90,8 @@ char	*mod_g(long double nbr, t_arg *head)
 	if ((str_d = try_double(nbr, head, nbr_len)) == NULL)
 		return (str_e);
 	len_e = only_nbr_len(str_e);
+	if (nbr_len <= 6)
+		len_e = 100;
 	len_d = only_nbr_len(str_d);
 	if (len_d <= len_e)
 		return (str_d);
