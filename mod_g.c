@@ -28,7 +28,7 @@ char	*try_double(long double nbr, t_arg *head)
 		str[i - 1] = 0;
 		i--;
 	}
-	if (str[i - 1] == ',')
+	if (str[i - 1] == '.')
 		str[i - 1] = 0;
 	head->precision = prec;
 	return (str);
