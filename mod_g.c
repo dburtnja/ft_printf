@@ -83,6 +83,7 @@ char	*mod_g(long double nbr, t_arg *head)
 	int		len_e;
 	int		len_d;
 
+	ft_putnbr(head->precision);
 	if ((long long)nbr == 0 && head->precision == 0)
 		head->precision = 1;
 	nbr_len = ft_nbrlen((long long)(nbr < 0 ? -nbr : nbr), 10);
