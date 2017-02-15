@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			  */
-/*														  :::	   ::::::::   */
-/*	 mod_g.c											:+:		 :+:	:+:   */
-/*													  +:+ +:+		  +:+	  */
-/*	 By: dburtnja <marvin@42.fr>					+#+  +:+	   +#+		  */
-/*												  +#+#+#+#+#+	+#+			  */
-/*	 Created: 2017/02/11 22:21:00 by dburtnja		   #+#	  #+#			  */
-/*	 Updated: 2017/02/11 22:21:00 by dburtnja		  ###	########.fr		  */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mod_g.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/15 21:28:34 by dburtnja          #+#    #+#             */
+/*   Updated: 2017/02/15 21:28:38 by dburtnja         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
@@ -83,7 +83,6 @@ char	*mod_g(long double nbr, t_arg *head)
 	int		len_e;
 	int		len_d;
 
-	ft_putnbr(head->precision);
 	if ((long long)nbr == 0 && head->precision == 0)
 		head->precision = 1;
 	nbr_len = ft_nbrlen((long long)(nbr < 0 ? -nbr : nbr), 10);
