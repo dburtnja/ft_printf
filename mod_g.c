@@ -53,7 +53,7 @@ int		only_nbr_len(char *str)
 
 	i = 0;
 	while ((str[i] != 0 && str[i] >= '0' && str[i] <= '9') || str[i] == '-' ||
-		str[i] == ',')
+		str[i] == '.')
 		i++;
 	return (i);
 }
