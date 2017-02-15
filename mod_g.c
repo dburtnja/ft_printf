@@ -76,11 +76,11 @@ char	*mod_g(long double nbr, t_arg *head)
 		return (str_e);
 	if (str_e == NULL)
 		return (str_d);
-	ft_putstr(str_d);
+/*	ft_putstr(str_d);
 	ft_putchar('\n');
 	ft_putstr(str_e);
 	ft_putchar('\n');
-	len_e = ft_strlen(str_e);
+*/	len_e = ft_strlen(str_e);
 	len_d = ft_strlen(str_d);
 	if (len_d <= len_e)
 		return (str_d);

@@ -79,7 +79,6 @@ char	*other_nbr(long double nbr, t_arg *head)
 {
 	char		*str;
 	int			up;
-	
 
 	str = NULL;
 	up = head->type % 2 == 0;
