@@ -39,6 +39,7 @@ typedef	struct		s_arg
 	size_t			len;
 }					t_arg;
 
+char				*make_str(t_arg *head, long double value, int power_s, char hesh);
 void				scan_width(char *str, int *i, va_list arg, t_arg *head);
 void				scan_precision(char *str, int *i, va_list arg, int *nbr);
 char				*find_size(int *len, t_arg *head,int val);

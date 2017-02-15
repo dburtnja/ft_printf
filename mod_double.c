@@ -75,6 +75,23 @@ char	*type_d(t_arg *head, long double nbr)
 	return (NULL);
 }
 
+char	*other_nbr(long double nbr, t_arg *head)
+{
+	char		*str;
+	int			up;
+	
+
+	str = NULL;
+	up = head->type % 2 == 0;
+	if (nbr != nbr)
+		str = up ? ft_strdup("NAN") : ft_strdup("nan");
+	else if (nbr == -0.1 / 0)
+		str = up ? ft_strdup("-INF") : ft_strdup("-inf");
+	else if (nbr == 0.1 / 0)
+		str = up ? ft_strdup("INF") : ft_strdup("inf");
+	return (str);
+}
+
 void	mod_double(t_arg *head, va_list arg)
 {
 	char		*str;
@@ -88,7 +105,8 @@ void	mod_double(t_arg *head, va_list arg)
 		head->flag.nul = 0;
 	if (head->precision == -1 && !(head->type >= 15 && head->type <= 18))
 		head->precision = 6;
-	str = type_d(head, nbr);
+	if ((str = other_nbr(nbr, head)) == NULL)
+		str = type_d(head, nbr);
 	mod_m_flag(str, head);
 	ft_strdel(&str);
 }
