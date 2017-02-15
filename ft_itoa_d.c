@@ -60,10 +60,10 @@ char		*make_str(t_arg *head, long double value, int power_s, char hesh)
 	char		*s;
 	long long	r_nbr;
 
-	r_nbr = (long long)value < 0 ? value * -1 : value;
 	sign = mk_sign_d(&value, head, &len[1]);
 	if (head->precision == 0)
 		value = ft_r_nbr(value);
+	r_nbr = (long long)value < 0 ? value * -1 : value;
 	len[4] = ft_nbrlen(r_nbr, 10);
 	str = all_len(&len[0], head, power_s == 0 || power_s > 2 ? power_s : 2);
 	s = str;
@@ -71,7 +71,7 @@ char		*make_str(t_arg *head, long double value, int power_s, char hesh)
 	nbr_to_str(r_nbr, 10, &str, 0);
 	if (len[5] == 1)
 	{
-		*str = '.';
+		*str = ',';
 		str++;
 	}
 	if (len[6] > 0 && len[6] <= 15)

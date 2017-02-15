@@ -45,7 +45,7 @@ void				scan_precision(char *str, int *i, va_list arg, int *nbr);
 char				*find_size(int *len, t_arg *head,int val);
 char				*mod_e(long double nbr, t_arg *head);
 char				*mod_g(long double nbr, t_arg *head);
-int					find_precision(long double nbr, t_arg *head, int nbr_len);
+int					find_precision(long double nbr, t_arg *head);
 int					ft_nbr_last_len(long double nbr, int base);
 char				*check_char(int c);
 int					ft_printf(char *str, ...);
