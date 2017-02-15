@@ -34,19 +34,6 @@ char	*try_double(long double nbr, t_arg *head)
 	return (str);
 }
 
-char	*try_mod_e(long double nbr, t_arg *head)
-{
-	int		prec;
-	char	*str;
-
-	prec = head->precision;
-	if (head->precision == -1)
-		head->precision = 5;
-	str = mod_e(nbr, head);
-	head->precision = prec;
-	return (str);
-}
-
 int		only_nbr_len(char *str)
 {
 	int		i;
@@ -56,6 +43,32 @@ int		only_nbr_len(char *str)
 		str[i] == '.')
 		i++;
 	return (i);
+}
+
+void	rem_nul(char *str)
+{
+	int		i;
+	char	*p;
+
+	i = only_nbr_len(str);
+	p = str + i - 1;
+	while (*p == '0' && p != str)
+		p--;
+	ft_memmove((void*)p + 1, (void*)str + i, (ft_strlen(str) - i) + 1);
+}
+
+char	*try_mod_e(long double nbr, t_arg *head)
+{
+	int		prec;
+	char	*str;
+
+	prec = head->precision;
+	if (head->precision == -1)
+		head->precision = 5;
+	str = mod_e(nbr, head);
+	rem_nul(str);
+	head->precision = prec;
+	return (str);
 }
 
 char	*mod_g(long double nbr, t_arg *head)
@@ -77,7 +90,9 @@ char	*mod_g(long double nbr, t_arg *head)
 	ft_putchar('\n');
 */	len_e = only_nbr_len(str_e);
 	len_d = only_nbr_len(str_d);
-	if (len_d <= len_e)
+/*	if (head->precision == -1 &&)
+		return (str_d);
+*/	if (len_d <= len_e)
 		return (str_d);
 	else
 		return (str_e);
