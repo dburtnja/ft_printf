@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 21:28:34 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/16 15:24:23 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/16 15:55:26 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*try_double(long double nbr, t_arg *head, int nbr_len)
 		head->precision = head->precision - nbr_len;
 	str = ft_itoa_d(nbr, head, -1);
 	i = ft_strlen(str);
-	while (i > 0 && str[i - 1] == '0' && head->precision != 0 && head->flag.hesh == 0)
+	while (i > 0 && str[i - 1] == '0' && head->flag.hesh == 0)
 	{
 		str[i - 1] = 0;
 		i--;
@@ -66,6 +66,34 @@ char	*try_mod_e(long double nbr, t_arg *head, int *count)
 	return (str);
 }
 
+char	*add_nul_to_str(char *str, t_arg *head)
+{
+	int		nul;
+	char	*ret;
+	char	*buf;
+	char	*str_old;
+
+	str_old = str;
+	ret = ft_strnew(head->width);
+	buf = ret;
+	nul = head->width - ft_strlen(str);
+	if (*str == '-')
+	{
+		str++;
+		*buf = '-';
+		buf++;
+	}
+	while (nul > 0)
+	{
+		*buf = '0';
+		buf++;
+		nul--;
+	}
+	ft_strncpy(buf, str, ft_strlen(str));
+	ft_strdel(&str_old);
+	return (ret);
+}
+
 char	*mod_g(long double nbr, t_arg *head)
 {
 	char	*str;
@@ -78,11 +106,16 @@ char	*mod_g(long double nbr, t_arg *head)
 	else if (head->precision < 1)
 		head->precision = 1;
 	str = try_mod_e(nbr, head, &count);
+	if (head->flag.nul == 1 && head->width > (int)ft_strlen(str))
+		str = add_nul_to_str(str, head);
 	if (count < -4 || (head->precision != -1 && count >= head->precision))
 		return (str);
 	else
 	{
 		ft_strdel(&str);
-		return (try_double(nbr, head, nbr_len));
+		str = try_double(nbr, head, nbr_len);
+		if (head->flag.nul == 1 && head->width > (int)ft_strlen(str))
+			str = add_nul_to_str(str, head);
+		return (str);
 	}
 }
