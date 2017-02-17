@@ -64,6 +64,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 		@$(CC) $(CFLAGS) $(SRC)
 		@ar rc $(NAME) $(OBJ)
+		@$(CC) $(NAME) main_d.c
 		
 clean:
 		@rm -f $(OBJ)

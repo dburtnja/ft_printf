@@ -85,9 +85,9 @@ char	*other_nbr(long double nbr, t_arg *head)
 	up = head->type % 2 == 0;
 	if (nbr != nbr)
 		str = up ? ft_strdup("NAN") : ft_strdup("nan");
-	else if (nbr == -0.1 / 0)
+	else if (nbr == -0.1 / 0.0)
 		str = up ? ft_strdup("-INF") : ft_strdup("-inf");
-	else if (nbr == 0.1 / 0)
+	else if (nbr == 0.1 / 0.0)
 		str = up ? ft_strdup("INF") : ft_strdup("inf");
 	return (str);
 }
