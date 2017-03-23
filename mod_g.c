@@ -100,7 +100,7 @@ char	*mod_g(long double nbr, t_arg *head)
 	int		count;
 	int		nbr_len;
 
-	nbr_len = ft_nbrlen((long long)(nbr < 0 ? -nbr : nbr), 10);
+	nbr_len = ft_nbrlen_base((long long)(nbr < 0 ? -nbr : nbr), 10);
 	if (head->precision == -1)
 		head->precision = 6;
 	else if (head->precision < 1)

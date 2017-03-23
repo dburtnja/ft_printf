@@ -106,7 +106,7 @@ char				*proc_wint8(int c);
 char				*proc_wint16(int c);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 int					ft_lentoc(char *buf, char c);
-size_t				ft_putstr(char const *s);
+size_t				ft_putstr_len(char const *s);
 char				*ft_strdup(const char *s);
 char				*ft_strjoin(char const *s1, char const *s2);
 size_t				ft_strlen(const char *s);
@@ -123,7 +123,8 @@ void				ft_memdel(void **ap);
 char				*ft_strncpy(char *dest, const char *str, size_t n);
 char				*ft_itoa_base(unsigned long long value, unsigned
 		long long base, int up, int nul);
-int					ft_nbrlen(unsigned long long i, unsigned long long base);
+int					ft_nbrlen_base(unsigned long long i,
+		unsigned long long base);
 void				nbr_to_str(unsigned long long value, unsigned
 		long long base, char **str, int up);
 

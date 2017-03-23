@@ -73,7 +73,7 @@ char		*make_str(t_arg *head, long double value, int power_s, char hesh)
 	if (head->precision == 0)
 		value = ft_r_nbr(value);
 	r_nbr = (long long)value < 0 ? value * -1 : value;
-	len[4] = ft_nbrlen(r_nbr, 10);
+	len[4] = ft_nbrlen_base(r_nbr, 10);
 	str = all_len(&len[0], head, power_s == 0 || power_s > 2 ? power_s : 2);
 	s = str;
 	str = add_nul(str, sign, len[3] + len[1], hesh);
@@ -92,7 +92,7 @@ char		*ft_itoa_d(long double value, t_arg *head, int power)
 {
 	char				*str;
 
-	str = make_str(head, value, power != -1 ? ft_nbrlen((long long)power, 10) :
+	str = make_str(head, value, power != -1 ? ft_nbrlen_base((long long)power, 10) :
 			0, 0);
 	return (str);
 }

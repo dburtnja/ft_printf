@@ -73,7 +73,7 @@ void		ft_round_d(long double nbr, t_arg *head, char *str)
 		p--;
 	}
 	nbr_l = ft_r_nbr(nbr);
-	p = head->precision - ft_nbrlen(nbr_l, 10);
+	p = head->precision - ft_nbrlen_base(nbr_l, 10);
 	while (p > 0)
 	{
 		*str = '0';

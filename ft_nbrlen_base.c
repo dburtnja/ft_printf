@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/02 20:58:47 by dburtnja          #+#    #+#             */
-/*   Updated: 2016/12/02 20:59:07 by dburtnja         ###   ########.fr       */
+/*   Created: 2016/12/07 16:51:04 by dburtnja          #+#    #+#             */
+/*   Updated: 2017/01/27 15:27:54 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr(int n)
+int		ft_nbrlen_base(unsigned long long i, unsigned long long base)
 {
-	if (n + 1 == -2147483647)
+	int c;
+
+	c = 0;
+	if (i == 0)
+		return (1);
+	while (i > 0)
 	{
-		ft_putstr("-2147483648");
+		i = i / base;
+		c++;
 	}
-	else
-	{
-		if (n < 0)
-		{
-			ft_putchar('-');
-			n = n * -1;
-		}
-		if (n >= 10)
-		{
-			ft_putnbr(n / 10);
-			ft_putnbr(n % 10);
-		}
-		else
-			ft_putchar(n + '0');
-	}
+	return (c);
 }
