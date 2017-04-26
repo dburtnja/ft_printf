@@ -6,13 +6,13 @@
 #    By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/09 16:49:11 by dburtnja          #+#    #+#              #
-#    Updated: 2017/02/11 22:22:55 by dburtnja         ###   ########.fr        #
+#    Updated: 2017/03/17 15:59:09 by dburtnja         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -c
+CFLAGS = -g -Wall -Wextra -Werror -c
 SRC =	check_type.c\
 		ft_atoi_mod.c\
 		ft_bzero.c\
@@ -64,7 +64,6 @@ all: $(NAME)
 $(NAME): $(OBJ)
 		@$(CC) $(CFLAGS) $(SRC)
 		@ar rc $(NAME) $(OBJ)
-		@$(CC) $(NAME) main_d.c
 		
 clean:
 		@rm -f $(OBJ)
