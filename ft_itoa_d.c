@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 19:32:52 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/15 21:30:39 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/04/26 18:52:18 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ char		*ft_itoa_d(long double value, t_arg *head, int power)
 {
 	char				*str;
 
-	str = make_str(head, value, power != -1 ? ft_nbrlen_base((long long)power, 10) :
-			0, 0);
+	str = make_str(head, value, power != -1 ?
+			ft_nbrlen_base((long long)power, 10) : 0, 0);
 	return (str);
 }
