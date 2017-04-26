@@ -41,7 +41,7 @@ char	*ft_itoa_base(unsigned long long value, unsigned long long base,
 	char	*s;
 	int		nbrl;
 
-	nbrl = ft_nbrlen(value, base);
+	nbrl = ft_nbrlen_base(value, base);
 	str = ft_strnew(nbrl + nul);
 	s = str;
 	if (base < 2 || base > 16)

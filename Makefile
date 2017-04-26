@@ -6,7 +6,11 @@
 #    By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/09 16:49:11 by dburtnja          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2017/03/17 15:59:09 by dburtnja         ###   ########.fr        #
+=======
+#    Updated: 2017/03/23 20:06:03 by dburtnja         ###   ########.fr        #
+>>>>>>> 3f3c9ac7850379944041c717eb8a49dfdc35df7d
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,28 +19,27 @@ CC = gcc
 CFLAGS = -g -Wall -Wextra -Werror -c
 SRC =	check_type.c\
 		ft_atoi_mod.c\
-		ft_bzero.c\
+		../ft_bzero.c\
 		ft_itoa_base.c\
 		ft_itoa_p.c\
-		ft_lentoc.c\
+		../ft_lentoc.c\
 		ft_list.c\
-		ft_memalloc.c\
-		ft_memdel.c\
-		ft_memmove.c\
+		../ft_memalloc.c\
+		../ft_memdel.c\
+		../ft_memmove.c\
 		ft_modlst.c\
-		ft_nbrlen.c\
+		ft_nbrlen_base.c\
 		ft_printf.c\
-		ft_putchar.c\
-		ft_putnbr.c\
-		ft_putstr.c\
-		ft_strcat.c\
-		ft_strdel.c\
-		ft_strdup.c\
-		ft_strjoin.c\
-		ft_strlen.c\
-		ft_strncpy.c\
-		ft_strnew.c\
-		ft_strsub.c\
+		../ft_putchar.c\
+		../ft_putnbr.c\
+		../ft_strcat.c\
+		../ft_strdel.c\
+		../ft_strdup.c\
+		../ft_strjoin.c\
+		../ft_strlen.c\
+		../ft_strncpy.c\
+		../ft_strnew.c\
+		../ft_strsub.c\
 		help_check_type.c\
 		help_mod_m_flag.c\
 		mod_and_print.c\

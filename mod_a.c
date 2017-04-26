@@ -77,7 +77,7 @@ char	*write_a(long double nbr, t_arg *head, int c)
 		head->precision = ft_nbr_last_len(nbr, 16);
 	sign = mk_sign_d(&nbr, head, &len[1]);
 	len[4] = 1;
-	str = all_len(&len[0], head, ft_nbrlen(c < 0 ? -c : c, 10));
+	str = all_len(&len[0], head, ft_nbrlen_base(c < 0 ? -c : c, 10));
 	s = str;
 	str = add_nul(str, sign, len[3] + len[1], head->type == 17 ? 'x' : 'X');
 	nbr_to_str((long long)nbr, 10, &str, 0);

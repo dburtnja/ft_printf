@@ -19,7 +19,7 @@ char	*ft_itoa_void(unsigned long long value, t_arg *head)
 	char	*str;
 
 	len[2] = 0;
-	len[3] = ft_nbrlen(value, 16);
+	len[3] = ft_nbrlen_base(value, 16);
 	len[4] = 16;
 	if ((str = find_size(&len[0], head, value)) == NULL)
 		exit(1);

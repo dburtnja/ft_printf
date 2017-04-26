@@ -70,7 +70,7 @@ char	*ft_itoa_p(long long value, t_arg *head)
 	char	*str;
 
 	sign = mk_sign(&value, head, &len);
-	nbrl = ft_nbrlen(value, 10);
+	nbrl = ft_nbrlen_base(value, 10);
 	if (head->precision > nbrl)
 		len = len + head->precision;
 	else if (head->precision == -1 && head->width > nbrl && head->flag.nul == 1)
@@ -123,7 +123,7 @@ t_arg *head, int up)
 	char	*str;
 
 	len[2] = 0;
-	len[3] = ft_nbrlen(value, b);
+	len[3] = ft_nbrlen_base(value, b);
 	len[4] = b;
 	if ((str = find_size(&len[0], head, value)) == NULL)
 		exit(1);
