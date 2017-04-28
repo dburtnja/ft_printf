@@ -21,7 +21,7 @@ char	*ft_itoa_void(unsigned long long value, t_arg *head)
 	len[2] = 0;
 	len[3] = ft_nbrlen_base(value, 16);
 	len[4] = 16;
-	if ((str = find_size(&len[0], head, value)) == NULL)
+	if ((str = find_size(&len[0], head, (int)value)) == NULL)
 		exit(1);
 	s = str;
 	str = add_hesh(str, 16, 0);
@@ -36,14 +36,14 @@ char	*ft_itoa_void(unsigned long long value, t_arg *head)
 void	mod_void(t_arg *head, va_list ptr)
 {
 	char				*str;
-	unsigned long long	ad;
+	size_t				ad;
 
 	head->flag.hesh = 1;
 	head->flag.pl = 0;
 	head->flag.space = 0;
 	if (head->flag.min == 1)
 		head->flag.nul = 0;
-	ad = (unsigned long long)va_arg(ptr, void*);
+	ad = (size_t)va_arg(ptr, void*);
 	str = ft_itoa_void(ad, head);
 	mod_m_flag(str, head);
 	ft_strdel(&str);

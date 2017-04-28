@@ -20,17 +20,17 @@ char	*write_e(long double nbr, t_arg *head, int c)
 	char	*ret;
 	char	upper;
 
-	upper = head->type == 13 || head->type == 15 ? 'e' : 'E';
+	upper = (char)(head->type == 13 || head->type == 15 ? 'e' : 'E');
 	str2 = ft_strnew(10);
 	str2[0] = upper;
-	str2[1] = c < 0 ? '-' : '+';
+	str2[1] = (char)(c < 0 ? '-' : '+');
 	buf = str2 + 2;
 	if ((c > 0 ? c : c * -1) < 10)
 	{
 		*buf = '0';
 		buf++;
 	}
-	nbr_to_str(c > 0 ? c : c * -1, 10, &buf, 0);
+	nbr_to_str((unsigned long long)(c > 0 ? c : c * -1), 10, &buf, 0);
 	str1 = ft_itoa_d(nbr, head, c < 0 ? -c : c);
 	ret = ft_strjoin(str1, str2);
 	ft_strdel(&str1);
@@ -41,7 +41,6 @@ char	*write_e(long double nbr, t_arg *head, int c)
 char	*mod_e(long double nbr, t_arg *head, int *count)
 {
 	unsigned long long	buf;
-	long double			r_nbr;
 
 	*count = 0;
 	buf = (unsigned long long)(nbr < 0 ? nbr * -1 : nbr);
@@ -57,7 +56,6 @@ char	*mod_e(long double nbr, t_arg *head, int *count)
 		nbr /= 10;
 		buf = (unsigned long long)(nbr < 0 ? nbr * -1 : nbr);
 	}
-	r_nbr = head->precision == 0 ? ft_r_nbr(nbr) : nbr;
 	return (write_e(nbr, head, *count));
 }
 

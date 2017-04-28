@@ -16,12 +16,9 @@ t_arg	*read_str(char *str, va_list arg)
 {
 	t_arg	*head;
 	t_arg	*p;
-	int		start;
 	size_t	len;
 
-	start = 0;
 	head = NULL;
-	p = NULL;
 	while (*str != '\0')
 	{
 		if (*str == '%')
@@ -31,7 +28,7 @@ t_arg	*read_str(char *str, va_list arg)
 		}
 		else
 		{
-			len = ft_lentoc(str, '%');
+			len = (size_t)ft_lentoc(str, '%');
 			p = new_lst(ft_strsub(str, 0, len), 0);
 			p->len = len;
 			colect_lst(&head, p);
